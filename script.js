@@ -361,7 +361,6 @@ paintButtons.forEach((button) => {
 
     configuration.color = button.dataset.color;
     configuration.colorName = button.dataset.name;
-    document.documentElement.style.setProperty("--accent", configuration.color);
     updateGarage();
   });
 });
