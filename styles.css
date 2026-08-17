@@ -101,8 +101,8 @@ h1, h2, p { margin-top: 0; }
 .shape { height: 24px; width: 54px; display:block; background:currentColor; position:relative; clip-path: polygon(0 66%, 12% 38%, 43% 20%, 73% 22%, 100% 60%, 96% 85%, 4% 85%); }
 .shape::before, .shape::after { content:""; position:absolute; background:white; height:7px; width:10px; bottom:-3px; border-radius:50%; }
 .shape::before{left:8px}.shape::after{right:8px}
-.sport-shape { clip-path:polygon(0 64%, 14% 44%, 51% 10%, 72% 15%, 100% 60%, 95% 85%, 4% 85%); }
-.muscle-shape { clip-path:polygon(0 62%, 10% 39%, 36% 29%, 76% 30%, 100% 61%, 96% 85%, 4% 85%); }
+.sport-shape { clip-path:polygon(0 68%, 16% 50%, 42% 36%, 60% 10%, 78% 10%, 89% 34%, 100% 60%, 95% 88%, 4% 88%); }
+.muscle-shape { clip-path:polygon(0 60%, 8% 38%, 24% 26%, 40% 12%, 74% 12%, 87% 26%, 100% 58%, 96% 88%, 4% 88%); }
 .second-title { margin-top:22px; }
 .paint-options { display:flex; gap:12px; margin-top:15px; }
 .paint { width:29px; height:29px; border-radius:50%; border: 3px solid white; background:var(--paint); box-shadow: 0 0 0 1px #d7dce5; cursor:pointer; transition:.18s ease; }
@@ -171,8 +171,17 @@ h1, h2, p { margin-top: 0; }
 .stripe { position:absolute; display:none; z-index:1; }
 .stripe-racing .stripe { display:block; width:19px; height:62px; left:82px; top:3px; background:rgba(255,255,255,.84); transform:skewX(-16deg); box-shadow:26px 0 0 rgba(255,255,255,.84); }
 .stripe-bolt .stripe { display:block; width:52px; height:37px; top:18px; left:99px; background:#ffe400; clip-path:polygon(49% 0, 100% 0, 62% 39%, 91% 39%, 20% 100%, 40% 52%, 5% 52%); }
-.body-sport .car-body { clip-path:polygon(0 60%, 11% 42%, 40% 30%, 53% 0, 70% 0, 81% 29%, 96% 36%, 100% 61%, 96% 88%, 5% 88%); }.body-sport .car-roof{left:127px;width:86px;transform:skewX(18deg)}.body-sport .window-left{left:140px;width:34px}.body-sport .window-right{left:179px;width:29px}
-.body-muscle .car-body { clip-path:polygon(0 55%, 9% 34%, 31% 27%, 45% 4%, 70% 4%, 82% 27%, 96% 36%, 100% 61%, 96% 88%, 5% 88%); }.body-muscle .car-roof{left:106px;width:112px}.body-muscle .window-left{left:119px;width:45px}.body-muscle .window-right{left:170px;width:39px}
+/* Perfil SPORT: nariz larga y baja con parabrisas retrasado, como un coupé deportivo de la referencia de tipos de auto. */
+.body-sport .car-body { clip-path:polygon(0 64%, 12% 48%, 34% 36%, 50% 12%, 68% 12%, 80% 32%, 95% 40%, 100% 63%, 96% 88%, 5% 88%); }
+.body-sport .car-roof{left:148px;width:68px;height:36px;top:4px;transform:skewX(20deg)}
+.body-sport .window-left{left:158px;width:30px;top:15px}
+.body-sport .window-right{left:191px;width:26px;top:15px}
+
+/* Perfil MUSCLE/SUV: techo más plano y cabina amplia, como los tipos SUV/Familiar de la referencia de tipos de auto. */
+.body-muscle .car-body { clip-path:polygon(0 58%, 7% 38%, 22% 24%, 38% 8%, 74% 8%, 86% 24%, 97% 34%, 100% 60%, 96% 88%, 5% 88%); }
+.body-muscle .car-roof{left:92px;width:134px;height:42px;top:0;transform:skewX(6deg)}
+.body-muscle .window-left{left:104px;width:48px;top:12px}
+.body-muscle .window-right{left:158px;width:56px;top:12px}
 .showcase .car { transform:scale(1.18); margin-top:18px; animation:garage-idle 2.5s ease-in-out infinite; }
 .drawing-canvas {
   position:absolute; z-index:5; width:280px; height:125px; margin-top:18px; transform:scale(1.18);
