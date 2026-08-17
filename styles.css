@@ -136,7 +136,9 @@ h1, h2, p { margin-top: 0; }
 }
 .car-body::after{content:"";position:absolute;left:29px;right:32px;top:11px;height:3px;border-radius:50%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.7),transparent);filter:blur(.4px)}
 .car-roof { position:absolute; width:98px; height:40px; left:115px; top:2px; background:linear-gradient(160deg,#526e87,#121b2a 38%,#07101c); border-radius:53px 55px 2px 0; transform:skewX(14deg); box-shadow:inset 0 2px 2px rgba(255,255,255,.25),0 2px 2px rgba(0,0,0,.35); }
-.window { position:absolute; top:13px; height:25px; background:linear-gradient(135deg,#e6fcff 0 9%,#8fc6da 10% 18%,#234d70 47%,#0b1b31 100%); transform:skewX(14deg); opacity:.96; box-shadow:inset 0 2px 1px rgba(255,255,255,.55),inset 0 -2px 2px rgba(0,0,0,.5); }
+.window { position:absolute; top:13px; height:25px; overflow:hidden; background:linear-gradient(150deg,#f4feff 0 6%,#bfe9f4 7% 16%,#5ba3c4 17% 33%,#1f5478 34% 58%,#0a1e34 59% 100%); transform:skewX(14deg); opacity:.97; box-shadow:inset 0 2px 2px rgba(255,255,255,.65),inset 0 -3px 4px rgba(0,0,0,.55),inset 3px 0 2px rgba(255,255,255,.2); }
+.window::after { content:""; position:absolute; inset:0; background:linear-gradient(112deg,transparent 28%,rgba(255,255,255,.62) 42%,rgba(255,255,255,.08) 54%,transparent 66%); mix-blend-mode:screen; }
+.window::before { content:""; position:absolute; left:0; right:0; bottom:0; height:35%; background:linear-gradient(180deg,transparent,rgba(0,0,0,.4)); }
 .window-left { width:38px; left:128px; }.window-right { width:34px; left:173px; border-left:3px solid rgba(0,0,0,.35); }
 .headlight{position:absolute;right:8px;top:38px;height:11px;width:21px;border:2px solid #d7f9ff;border-radius:5px 10px 10px 3px;background:linear-gradient(90deg,#fff,#dffcff 56%,#76dfff);box-shadow:0 0 7px #fff,0 0 15px #52d8ff}.headlight::after{content:"";position:absolute;inset:3px 4px;background:repeating-linear-gradient(90deg,rgba(255,255,255,.9) 0 2px,transparent 2px 4px);border-radius:2px}
 .taillight{position:absolute;left:8px;top:40px;width:13px;height:9px;border-radius:5px 2px 2px 4px;background:linear-gradient(90deg,#5a060b,#ff263c,#ffd1d4);box-shadow:0 0 8px rgba(255,28,51,.85)}
@@ -147,9 +149,14 @@ h1, h2, p { margin-top: 0; }
 .bumper{position:absolute;z-index:2;right:0;top:58px;width:35px;height:12px;border-radius:0 2px 8px 2px;background:linear-gradient(180deg,rgba(255,255,255,.3),rgba(0,0,0,.35));border-top:1px solid rgba(255,255,255,.3)}
 .wheel{position:absolute;bottom:6px;width:49px;height:49px;border:7px solid #090c12;border-radius:50%;background:repeating-conic-gradient(#1b222b 0 10deg,#9ca9b2 10deg 15deg,#252d37 15deg 30deg);z-index:4;box-shadow:inset 0 0 0 3px #53606c,0 3px 3px rgba(0,0,0,.55)}.wheel::before{content:"";position:absolute;inset:8px;border-radius:50%;background:radial-gradient(circle,#e8edf1 0 15%,#535e69 16% 44%,#d8e0e5 45% 49%,#303a45 50%)}.wheel i{position:relative;z-index:1;width:11px;height:11px;display:block;margin:12px;border-radius:50%;background:#1a2028;border:3px solid #ecf3f5;box-shadow:0 0 0 2px #47525d}
 .wheel-back{left:40px}.wheel-front{right:38px}
-.car-spoiler { position:absolute; width:36px; height:7px; background:#141922; left:7px; top:45px; z-index:1; transform:rotate(-7deg); }
-.car-spoiler::after { content:""; position:absolute; width:4px; height:12px; background:#141922; right:3px; top:4px; }
-.spoiler-wing .car-spoiler{top:31px;left:0;width:59px;height:8px;border-radius:2px;background:linear-gradient(#5e7180,#111923);box-shadow:0 2px 2px #070a0e}.spoiler-wing .car-spoiler::after{right:5px;top:7px;width:5px;height:17px;background:#1b2630;box-shadow:-40px 0 #1b2630}.spoiler-rocket .car-spoiler{top:34px;left:-8px;width:60px;height:8px;border-radius:5px;background:linear-gradient(90deg,#571d26,#ff5941 35%,#f5e8d5 48%,#ff5941 61%,#571d26);box-shadow:0 0 9px #ff4b32}.spoiler-rocket .car-spoiler::after{right:4px;top:7px;width:6px;height:14px;background:#283440;box-shadow:-42px 0 #283440}
+.car-spoiler { position:absolute; width:34px; height:6px; border-radius:2px 4px 4px 2px; background:linear-gradient(180deg,#2a323d,#0b0e13); left:8px; top:44px; z-index:1; transform:rotate(-7deg); box-shadow:0 3px 2px rgba(0,0,0,.4), inset 0 1px 0 rgba(255,255,255,.15); }
+.car-spoiler::after { content:""; position:absolute; width:3px; height:11px; background:linear-gradient(#3a4450,#0b0e13); right:4px; top:5px; border-radius:1px; box-shadow:0 2px 1px rgba(0,0,0,.35); }
+.spoiler-wing .car-spoiler{top:30px;left:-1px;width:60px;height:7px;border-radius:3px 3px 2px 2px;background:linear-gradient(180deg,#7c8b98 0 18%,#3c4854 22% 60%,#111923);box-shadow:0 4px 3px rgba(0,0,0,.4),inset 0 1px 0 rgba(255,255,255,.3);}
+.spoiler-wing .car-spoiler::after{right:6px;top:6px;width:4px;height:16px;background:linear-gradient(#4b5766,#141c26);box-shadow:0 3px 2px rgba(0,0,0,.4),-42px 0 0 -1px rgba(0,0,0,0),-42px 3px 2px rgba(0,0,0,.4);}
+.spoiler-wing .car-spoiler::before{content:"";position:absolute;left:6px;top:6px;width:4px;height:16px;background:linear-gradient(#4b5766,#141c26);box-shadow:0 3px 2px rgba(0,0,0,.4);}
+.spoiler-rocket .car-spoiler{top:33px;left:-9px;width:61px;height:7px;border-radius:5px;background:linear-gradient(90deg,#571d26,#ff5941 35%,#fff2df 48%,#ff5941 61%,#571d26);box-shadow:0 0 10px #ff4b32,0 4px 3px rgba(0,0,0,.4);}
+.spoiler-rocket .car-spoiler::after{right:5px;top:6px;width:5px;height:13px;background:linear-gradient(#3f4c58,#141c26);box-shadow:0 3px 2px rgba(0,0,0,.4);}
+.spoiler-rocket .car-spoiler::before{content:"";position:absolute;left:5px;top:6px;width:5px;height:13px;background:linear-gradient(#3f4c58,#141c26);box-shadow:0 3px 2px rgba(0,0,0,.4);}
 .wheels-racing .wheel{border-color:#10151c;background:repeating-conic-gradient(#dce8ed 0 11deg,#25313c 12deg 23deg,#ffce22 24deg 28deg)}.wheels-racing .wheel::before{background:radial-gradient(circle,#ffd43a 0 14%,#25323d 15% 47%,#d9e5e9 48% 52%,#111820 53%)}.wheels-neon .wheel{border-color:#00d8ff;background:repeating-conic-gradient(#a855f7 0 12deg,#1c2633 13deg 25deg);box-shadow:0 0 10px #00d8ff,inset 0 0 0 3px #a855f7}.wheels-neon .wheel::before{background:radial-gradient(circle,#fff 0 15%,#00d8ff 16% 47%,#0b1524 48%)}
 .booster-rig{display:none;position:absolute;z-index:0;left:-43px;top:36px;width:57px;height:38px}.player-car.has-boosters .booster-rig{display:block}.booster-rig::before{content:"";position:absolute;left:20px;top:7px;width:35px;height:25px;background:linear-gradient(180deg,#151b22,#6e7b85 25%,#202932 48%,#9aa6ae 72%,#121820);clip-path:polygon(100% 0,100% 100%,16% 87%,0 65%,0 35%,16% 13%);filter:drop-shadow(-4px 3px 2px rgba(0,0,0,.5))}.booster-rig i{position:absolute;left:2px;width:30px;height:14px;border:4px solid #687783;border-left:7px solid #b8c7cc;border-radius:11px 4px 4px 11px;background:radial-gradient(ellipse at 20% 50%,#eaffff 0 16%,#14d7ff 24%,#073b54 52%,#121821 67%);box-shadow:-5px 0 9px rgba(0,211,255,.85),inset 2px 0 3px #fff}.booster-rig i:first-child{top:0}.booster-rig i:last-child{bottom:0}.booster-rig i::after{content:"";position:absolute;left:-27px;top:1px;width:29px;height:8px;border-radius:50%;background:rgba(185,211,218,.34);filter:blur(4px);opacity:0}.player-wrap.boosting .booster-rig i{background:radial-gradient(ellipse at 8% 50%,#fff 0 10%,#fff4a6 17%,#ff9e16 35%,#f23f00 53%,#1b2730 72%);box-shadow:-20px 0 17px #ff7200,-6px 0 8px #ffd352,inset 2px 0 3px #fff;animation:jet-flicker .1s alternate infinite}.player-wrap.boosting .booster-rig i::after{opacity:.8;animation:jet-smoke .45s ease-out infinite}@keyframes jet-smoke{to{transform:translateX(-24px) scale(1.8);opacity:0}}.player-wrap.boosting .booster-rig::after{content:"";position:absolute;left:-58px;top:8px;width:64px;height:23px;background:linear-gradient(90deg,transparent,#ff5300 30%,#ffd75a 60%,#faffea);clip-path:polygon(0 50%,58% 0,100% 16%,100% 84%,58% 100%);filter:blur(1px);animation:jet-flame .12s alternate infinite}@keyframes jet-flicker{to{filter:brightness(1.45)}}@keyframes jet-flame{to{transform:scaleX(.72);transform-origin:right;opacity:.72}}
 /* Kit X4: soporte reforzado, cuatro turbinas y chorros individuales. */
@@ -216,8 +223,45 @@ h1, h2, p { margin-top: 0; }
 .speed-streaks{position:absolute;z-index:2;inset:0;pointer-events:none;opacity:0;background:repeating-linear-gradient(175deg,transparent 0 18px,rgba(255,255,255,.42) 19px 20px,transparent 21px 35px);background-size:90px 120px;transition:opacity .2s ease}
 .racing .road-lines { animation-play-state:running; } .racing .speed-streaks{opacity:var(--streak-opacity,.1);animation:streaks .19s linear infinite}@keyframes road-scroll{to{background-position:-300px 0}}@keyframes streaks{to{background-position:-150px 250px}}
 .finish-line { position:absolute; width:12px; height:56%; background:repeating-conic-gradient(#fff 0 25%, #111 0 50%) 0 / 12px 12px; bottom:0; right:8%; z-index:2; }.finish-line span { position:absolute; top:-33px; left:-20px; color:#fff; background:#161b24; padding:6px 8px; font:800 13px/1 "Barlow Condensed"; }
-.race-car-wrap { position:absolute; z-index:3; transform:scale(.67); transform-origin:left bottom; transition:left .12s linear; }.player-wrap{left:10%;bottom:42%;}.bot-wrap{left:10%;}.bot-wrap-one{bottom:13%;}.bot-wrap-two{bottom:27%;}.bot-wrap-three{bottom:56%;transform:scale(.56);}
-.race-car-wrap .car { transform:scaleX(1); animation:car-vibration .17s linear infinite paused; }.racing .race-car-wrap .car{animation-play-state:running}.race-car-wrap .wheel{animation:wheel-spin .18s linear infinite paused}.racing .race-car-wrap .wheel{animation-play-state:running}.bot-wrap-two .car{filter:hue-rotate(-8deg) drop-shadow(0 8px 5px rgba(255,94,10,.38))}.bot-wrap-three .car{filter:drop-shadow(0 0 8px rgba(0,216,255,.8))}@keyframes car-vibration{50%{transform:translateY(-2px)}}@keyframes wheel-spin{to{rotate:360deg}}
+.race-car-wrap { position:absolute; z-index:3; transform:scale(.67); transform-origin:left bottom; transition:left .12s linear, bottom .22s cubic-bezier(.34,1.4,.5,1); }.player-wrap{left:10%;bottom:42%;}.bot-wrap{left:10%;}.bot-wrap-one{bottom:13%;}.bot-wrap-two{bottom:27%;}.bot-wrap-three{bottom:56%;transform:scale(.56);}
+
+/* Físicas de carrocería: el auto es un cuerpo con inercia, no un sprite estático.
+   La suspensión y la carrocería reaccionan a aceleración, frenado, cambios de carril y golpes. */
+.race-car-wrap .car { transform-origin:50% 88%; transition:transform .26s cubic-bezier(.32,.9,.4,1); animation:car-vibration .17s linear infinite paused; }
+.racing .race-car-wrap .car { animation-play-state:running; }
+.race-car-wrap .wheel { animation:wheel-spin .18s linear infinite paused; transform-origin:center; }
+.racing .race-car-wrap .wheel { animation-play-state:running; }
+.bot-wrap-two .car { filter:hue-rotate(-8deg) drop-shadow(0 8px 5px rgba(255,94,10,.38)); }
+.bot-wrap-three .car { filter:drop-shadow(0 0 8px rgba(0,216,255,.8)); }
+@keyframes car-vibration { 50% { transform:translateY(-1.5px) rotate(.15deg); } }
+@keyframes wheel-spin { to { rotate:360deg; } }
+
+/* Peso transferido hacia atrás al acelerar/nitro: la trompa se levanta, la cola se hunde. */
+.player-wrap.accelerating .car { transform:rotate(-1.6deg) translateY(1px) scaleY(1.008); }
+.player-wrap.accelerating .wheel-back { transform:translateY(1.5px); }
+.player-wrap.accelerating .wheel-front { transform:translateY(-.6px); }
+
+/* Frenada/colisión: peso hacia adelante, la trompa se hunde y la cola se levanta. */
+.player-wrap.braking .car { transform:rotate(2.4deg) translateY(1.5px) scaleY(1.01); }
+.player-wrap.braking .wheel-front { transform:translateY(2px); }
+.player-wrap.braking .wheel-back { transform:translateY(-1px); }
+
+/* Cambio de carril: balanceo lateral (roll) como en un auto real tomando una curva. */
+.player-wrap.leaning-up .car { transform:rotate(-3.2deg) translateY(-2px); }
+.player-wrap.leaning-up .wheel-back { transform:translateY(2px) scaleY(.92); }
+.player-wrap.leaning-up .wheel-front { transform:translateY(-1.5px) scaleY(1.05); }
+.player-wrap.leaning-down .car { transform:rotate(3.2deg) translateY(2px); }
+.player-wrap.leaning-down .wheel-back { transform:translateY(-1.5px) scaleY(1.05); }
+.player-wrap.leaning-down .wheel-front { transform:translateY(2px) scaleY(.92); }
+
+/* Aterrizaje de salto: la suspensión se comprime y rebota antes de asentar. */
+.player-wrap.landing .car { animation:suspension-land .38s cubic-bezier(.2,.9,.3,1.1) both; }
+@keyframes suspension-land {
+  0% { transform:translateY(-3px) scaleY(1); }
+  38% { transform:translateY(3px) scaleY(.93); }
+  70% { transform:translateY(-1px) scaleY(1.02); }
+  100% { transform:translateY(0) scaleY(1); }
+}
 .player-wrap.boosting::before{content:"";position:absolute;z-index:-1;left:-82px;bottom:27px;width:120px;height:20px;background:linear-gradient(90deg,transparent,#ffb000,#fff);filter:blur(6px);animation:flame .12s alternate infinite}@keyframes flame{to{transform:scaleX(.72);opacity:.6}}
 .bot-car { --car-color:#a855f7; }
 .boost-meter{position:absolute;z-index:6;left:28px;bottom:17px;color:#fff;font:800 9px/1 "Inter";letter-spacing:1px;text-shadow:0 1px 2px #111}.boost-meter span{display:block;margin-bottom:6px}.boost-meter div{width:112px;height:7px;padding:1px;border:1px solid rgba(255,255,255,.65);background:rgba(9,16,27,.38)}.boost-meter i{display:block;width:100%;height:100%;background:linear-gradient(90deg,#ffbe26,#ff523d);transition:width .12s linear}.race-telemetry{position:absolute;z-index:6;right:28px;bottom:15px;width:94px;padding:8px 9px 7px;border:1px solid rgba(221,244,255,.54);background:linear-gradient(135deg,rgba(5,14,24,.78),rgba(27,54,71,.45));color:#dffaff;box-shadow:0 6px 18px rgba(0,0,0,.25),inset 0 0 16px rgba(0,216,255,.1);font:800 8px/1 "Inter";letter-spacing:.8px;text-align:center}.race-telemetry span{display:block;color:#74dff7;font-size:7px;letter-spacing:1.5px}.race-telemetry b{display:inline-block;margin:3px 5px 0 0;font:900 27px/.8 "Barlow Condensed";color:#fff}.race-telemetry small{font:800 7px/1 "Inter";color:#b8c9d3}.race-telemetry div{height:5px;margin-top:7px;border:1px solid rgba(255,255,255,.4);background:#0b131c}.race-telemetry i{display:block;height:100%;width:4%;background:linear-gradient(90deg,#31e89a,#e9dc43,#ff573f);transition:width .12s linear}.race-telemetry em{display:block;margin-top:3px;color:#97adbc;font:700 7px/1 "Inter";font-style:normal}

@@ -572,6 +572,14 @@ function boost() {
     [{ transform: "scale(1)" }, { transform: "scale(.93)" }, { transform: "scale(1)" }],
     { duration: 120 }
   );
+
+  // Transferencia de peso hacia atrás: la trompa se levanta ligeramente al acelerar.
+  playerWrap.classList.remove("braking");
+  playerWrap.classList.add("accelerating");
+  window.clearTimeout(playerWrap._pitchTimer);
+  playerWrap._pitchTimer = window.setTimeout(() => {
+    playerWrap.classList.remove("accelerating");
+  }, 220);
 }
 
 function activateNitro() {
@@ -599,14 +607,18 @@ function moveCar(direction) {
 
   raceState.lane = nextLane;
   playerWrap.style.bottom = `${42 + raceState.lane * 14}%`;
-  playerWrap.animate(
-    [
-      { transform: "scale(.67) translateY(0)" },
-      { transform: `scale(.67) translateY(${-direction * 18}px)` },
-      { transform: "scale(.67) translateY(0)" }
-    ],
-    { duration: 180, easing: "ease-out" }
-  );
+
+  // Físicas de balanceo (roll): la carrocería se inclina hacia el lado opuesto del giro,
+  // como un vehículo real transfiriendo peso al cambiar de carril.
+  const leanClass = direction > 0 ? "leaning-up" : "leaning-down";
+  playerWrap.classList.remove("leaning-up", "leaning-down");
+  void playerWrap.offsetWidth;
+  playerWrap.classList.add(leanClass);
+  window.clearTimeout(playerWrap._leanTimer);
+  playerWrap._leanTimer = window.setTimeout(() => {
+    playerWrap.classList.remove("leaning-up", "leaning-down");
+  }, 280);
+
   instruction.textContent = raceState.lane === -1 ? "CARRIL INFERIOR" : raceState.lane === 1 ? "CARRIL SUPERIOR" : "CARRIL CENTRAL";
 }
 
@@ -625,10 +637,15 @@ function checkRamps(playerDistance) {
       raceState.playerVelocity = Math.min(raceState.playerVelocity + 0.04, 0.15);
       raceState.turbo = Math.min(100, raceState.turbo + 18);
       raceState.boostFlashUntil = performance.now() + 820;
-      playerWrap.classList.remove("jumping");
+      playerWrap.classList.remove("jumping", "landing");
       void playerWrap.offsetWidth;
       playerWrap.classList.add("jumping");
-      window.setTimeout(() => playerWrap.classList.remove("jumping"), 840);
+      window.setTimeout(() => {
+        playerWrap.classList.remove("jumping");
+        // Físicas de aterrizaje: la suspensión absorbe el impacto y rebota antes de asentar.
+        playerWrap.classList.add("landing");
+        window.setTimeout(() => playerWrap.classList.remove("landing"), 400);
+      }, 840);
       instruction.textContent = "¡SALTO PERFECTO! Ganaste velocidad y turbo.";
     }
   });
@@ -673,7 +690,12 @@ function checkObstacles(playerPercent) {
       raceState.playerVelocity *= 0.38;
       raceState.turbo = Math.max(0, raceState.turbo - 32);
       raceState.boostFlashUntil = 0;
-      playerWrap.classList.remove("boosting");
+      playerWrap.classList.remove("boosting", "accelerating");
+      playerWrap.classList.add("braking");
+      window.clearTimeout(playerWrap._pitchTimer);
+      playerWrap._pitchTimer = window.setTimeout(() => {
+        playerWrap.classList.remove("braking");
+      }, 420);
       playerWrap.animate(
         [
           { transform: "scale(.67) translateX(0)" },
