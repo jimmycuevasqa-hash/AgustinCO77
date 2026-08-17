@@ -1,0 +1,302 @@
+<![DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#111827" />
+  <title>Garage Sprint | Diseña y Corre</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="app-shell">
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="Garage Sprint, inicio">
+        <span class="brand-mark">⚡</span>
+        <span>GARAGE <b>SPRINT</b></span>
+      </a>
+      <div class="topbar-tools">
+        <div class="wallet" aria-label="Créditos ganados">
+          <span>⚡</span><b id="credit-count">000</b><small>CRÉDITOS</small>
+        </div>
+        <div class="topbar-status">
+          <span class="status-dot"></span>
+          <span>PISTA LISTA</span>
+        </div>
+      </div>
+    </header>
+
+    <section id="garage-screen" class="screen garage-screen">
+      <div class="hero-copy">
+        <p class="eyebrow">TALLER DE VELOCIDAD</p>
+        <h1>DISEÑA. <span>PINTA.</span><br />CORRE.</h1>
+        <p class="subtitle">Arma tu máquina, dale tu color y demuestra que puedes vencer al bot en la pista.</p>
+      </div>
+
+      <div class="garage-layout">
+        <section class="preview-panel" aria-label="Vista previa de tu auto">
+          <div class="panel-heading">
+            <span>VISTA DEL TALLER</span>
+            <span id="paint-name">ROJO FUEGO</span>
+          </div>
+          <div id="garage-showcase" class="showcase scene-day">
+            <div class="light-beam beam-one"></div>
+            <div class="light-beam beam-two"></div>
+            <div id="garage-car" class="car player-car body-coupe stripe-none skin-clean">
+              <div class="booster-rig" aria-label="Kit de cuatro impulsores"><i></i><i></i><i></i><i></i></div>
+              <div class="car-spoiler"></div>
+              <div class="car-body">
+                <div class="car-roof"></div>
+                <div class="window window-left"></div>
+                <div class="window window-right"></div>
+                <div class="headlight"></div>
+                <div class="taillight"></div>
+                <div class="mirror"></div>
+                <div class="door"><i class="door-handle"></i></div>
+                <div class="side-skirt"></div>
+                <div class="grille"></div>
+                <div class="bumper"></div>
+                <div class="stripe"></div>
+              </div>
+              <div class="wheel wheel-back"><i></i></div>
+              <div class="wheel wheel-front"><i></i></div>
+            </div>
+            <canvas id="drawing-canvas" class="drawing-canvas" width="280" height="125" aria-label="Lienzo para dibujar sobre tu auto"></canvas>
+          </div>
+          <div class="stat-row">
+            <div class="mini-stat"><span class="stat-icon">⚙</span><span><b id="style-label">COUPÉ</b><small>CHASIS</small></span></div>
+            <div class="mini-stat"><span class="stat-icon">◉</span><span><b id="boost-label">2</b><small>TURBOS</small></span></div>
+            <div class="mini-stat"><span class="stat-icon">↯</span><span><b id="speed-label">74</b><small>VELOCIDAD</small></span></div>
+          </div>
+        </section>
+
+        <aside class="customizer">
+          <div class="customizer-title">
+            <span class="step-number">01</span>
+            <div><h2>ARMA TU AUTO</h2><p>Elige tu estilo de carrocería.</p></div>
+          </div>
+          <div class="option-grid body-options" role="group" aria-label="Carrocería">
+            <button class="option-card selected" data-body="coupe" data-label="COUPÉ" data-speed="74"><span class="shape coupe-shape"></span><b>COUPÉ</b></button>
+            <button class="option-card" data-body="sport" data-label="SPORT" data-speed="82"><span class="shape sport-shape"></span><b>SPORT</b></button>
+            <button class="option-card" data-body="muscle" data-label="MUSCLE" data-speed="78"><span class="shape muscle-shape"></span><b>MUSCLE</b></button>
+          </div>
+
+          <div class="customizer-title second-title">
+            <span class="step-number">02</span>
+            <div><h2>PONLE COLOR</h2><p>Elige una pintura para tu máquina.</p></div>
+          </div>
+          <div class="paint-options" role="group" aria-label="Color de pintura">
+            <button class="paint selected" data-color="#ff3d3d" data-name="ROJO FUEGO" style="--paint:#ff3d3d" aria-label="Rojo fuego"></button>
+            <button class="paint" data-color="#00d8ff" data-name="AZUL NEÓN" style="--paint:#00d8ff" aria-label="Azul neón"></button>
+            <button class="paint" data-color="#ffd400" data-name="AMARILLO RAYO" style="--paint:#ffd400" aria-label="Amarillo rayo"></button>
+            <button class="paint" data-color="#a855f7" data-name="VIOLETA" style="--paint:#a855f7" aria-label="Violeta"></button>
+            <button class="paint" data-color="#f7f7f7" data-name="BLANCO CROMO" style="--paint:#f7f7f7" aria-label="Blanco cromo"></button>
+          </div>
+
+          <div class="customizer-title second-title">
+            <span class="step-number">03</span>
+            <div><h2>AÑADE DETALLES</h2><p>Haz que se vea aún más rápido.</p></div>
+          </div>
+          <div class="detail-options" role="group" aria-label="Detalles del auto">
+            <button class="detail selected" data-stripe="stripe-none">LIMPIO</button>
+            <button class="detail" data-stripe="stripe-racing">RAYAS</button>
+            <button class="detail" data-stripe="stripe-bolt">RAYO</button>
+          </div>
+
+          <div class="customizer-title second-title">
+            <span class="step-number">04</span>
+            <div><h2>ELIGE TU SKIN</h2><p>Personaliza el acabado de la carrocería.</p></div>
+          </div>
+          <div class="skin-options" role="group" aria-label="Skin del auto">
+            <button class="skin selected" data-skin="skin-clean"><i class="skin-preview clean-preview"></i><b>BRILLO</b></button>
+            <button class="skin" data-skin="skin-flames"><i class="skin-preview flame-preview"></i><b>LLAMAS</b></button>
+            <button class="skin" data-skin="skin-carbon"><i class="skin-preview carbon-preview"></i><b>CARBONO</b></button>
+            <button class="skin" data-skin="skin-neon"><i class="skin-preview neon-preview"></i><b>NEÓN</b></button>
+            <button class="skin" data-skin="skin-camo"><i class="skin-preview camo-preview"></i><b>CAMO</b></button>
+          </div>
+
+          <div class="customizer-title second-title">
+            <span class="step-number">05</span>
+            <div><h2>MEJORA EL EQUIPO</h2><p>Elige llantas y un alerón para tu máquina.</p></div>
+          </div>
+          <div class="upgrade-grid">
+            <div class="upgrade-group">
+              <span class="upgrade-label">LLANTAS</span>
+              <div class="upgrade-options wheel-options" role="group" aria-label="Estilo de llantas">
+                <button class="upgrade selected" data-wheels="wheels-street"><i class="wheel-preview street-wheel"></i><b>STREET</b></button>
+                <button class="upgrade" data-wheels="wheels-racing"><i class="wheel-preview racing-wheel"></i><b>RACING</b></button>
+                <button class="upgrade" data-wheels="wheels-neon"><i class="wheel-preview neon-wheel"></i><b>NEÓN</b></button>
+              </div>
+            </div>
+            <div class="upgrade-group">
+              <span class="upgrade-label">ALERÓN</span>
+              <div class="upgrade-options spoiler-options" role="group" aria-label="Estilo de alerón">
+                <button class="upgrade selected" data-spoiler="spoiler-stock"><i class="spoiler-preview stock-spoiler"></i><b>STOCK</b></button>
+                <button class="upgrade" data-spoiler="spoiler-wing"><i class="spoiler-preview wing-spoiler"></i><b>WING</b></button>
+                <button class="upgrade" data-spoiler="spoiler-rocket"><i class="spoiler-preview rocket-spoiler"></i><b>ROCKET</b></button>
+              </div>
+            </div>
+          </div>
+
+          <div class="customizer-title second-title">
+            <span class="step-number">06</span>
+            <div><h2>ELIGE EL ESCENARIO</h2><p>Tu fondo también llega a la pista.</p></div>
+          </div>
+          <div class="backdrop-options" role="group" aria-label="Fondo del garaje y de la carrera">
+            <button class="backdrop selected" data-backdrop="scene-day"><i class="backdrop-preview day-preview"></i><span><b>CIUDAD</b><small>DÍA</small></span></button>
+            <button class="backdrop" data-backdrop="scene-sunset"><i class="backdrop-preview sunset-preview"></i><span><b>ATARD.</b><small>FUEGO</small></span></button>
+            <button class="backdrop" data-backdrop="scene-night"><i class="backdrop-preview night-preview"></i><span><b>NEÓN</b><small>NOCHE</small></span></button>
+          </div>
+
+          <div class="customizer-title second-title">
+            <span class="step-number">07</span>
+            <div><h2>DIBUJA SOBRE TU AUTO</h2><p>Agrega tu propia firma o un diseño.</p></div>
+          </div>
+          <div class="drawing-tools" aria-label="Herramientas de dibujo">
+            <label class="color-picker" title="Color del pincel">
+              <span>COLOR</span>
+              <input id="brush-color" type="color" value="#ffffff" aria-label="Color del pincel" />
+            </label>
+            <label class="brush-size">
+              <span>GROSOR</span>
+              <input id="brush-size" type="range" min="2" max="14" value="5" aria-label="Grosor del pincel" />
+            </label>
+            <button id="eraser-button" class="draw-tool" type="button">BORRADOR</button>
+            <button id="clear-drawing-button" class="draw-tool" type="button">LIMPIAR</button>
+          </div>
+          <div class="booster-builder">
+            <span>IMPULSADORES</span>
+            <label class="booster-quantity" aria-label="Cantidad de impulsores">
+              <span>×</span>
+              <input id="booster-count" type="number" min="0" value="0" inputmode="numeric" aria-label="Número de impulsores" />
+            </label>
+          </div>
+          <p class="drawing-hint">Escribe la cantidad de impulsores que quieras: cada tobera extra aumenta el empuje de tu máquina.</p>
+
+          <div class="group-race-panel" aria-labelledby="group-race-title">
+            <div class="group-race-heading">
+              <span class="step-number">08</span>
+              <div>
+                <h2 id="group-race-title">CORRE CON TU GRUPO</h2>
+                <p>Crea un grupo local y reta a sus integrantes.</p>
+              </div>
+            </div>
+            <label class="group-field">
+              <span>NOMBRE DEL GRUPO</span>
+              <input id="group-name-input" type="text" maxlength="22" placeholder="Ej. Los Rápidos" />
+            </label>
+            <div class="member-entry">
+              <label class="group-field">
+                <span>NOMBRE DEL PILOTO</span>
+                <input id="member-name-input" type="text" maxlength="16" placeholder="Ej. Sofía" />
+              </label>
+              <button id="add-member-button" type="button">+ AGREGAR</button>
+            </div>
+            <ul id="group-members-list" class="group-members-list" aria-label="Integrantes del grupo"></ul>
+            <div class="group-actions">
+              <button id="save-group-button" class="save-group-button" type="button">GUARDAR GRUPO</button>
+              <button id="group-race-button" class="group-race-button" type="button" disabled>CARRERA DE GRUPO <span>👥</span></button>
+            </div>
+            <p id="group-status" class="group-status">Agrega entre 1 y 3 pilotos para una carrera de grupo.</p>
+          </div>
+
+          <button id="race-button" class="race-button">¡A LA CARRERA! <span>→</span></button>
+        </aside>
+      </div>
+    </section>
+
+    <section id="race-screen" class="screen race-screen hidden" aria-live="polite">
+      <div class="race-hud">
+        <div class="racer-card player-card"><span class="racer-tag">TÚ</span><b id="hud-player-name">COUPÉ ROJO</b><div class="progress"><i id="player-progress"></i></div></div>
+        <div class="lap-info"><span>VUELTA</span><b>1 / 1</b><small id="speed-readout">000 <em>KM/H</em></small></div>
+        <div class="racer-card bot-card"><span id="rivals-tag" class="racer-tag">RIVALES</span><b id="hud-rivals-name">NEON-X · BLAZE · GHOST</b><div class="progress"><i id="bot-progress"></i></div></div>
+      </div>
+      <div id="race-scene" class="race-scene scene-day">
+        <div class="sky-atmosphere" aria-hidden="true"><i class="cloud cloud-one"></i><i class="cloud cloud-two"></i><i class="sun-glow"></i></div>
+        <div class="skyline"></div>
+        <div class="mountains"></div>
+        <div class="grandstand grandstand-left"><div class="crowd"></div><span>GARAGE SPRINT</span></div>
+        <div class="grandstand grandstand-right"><div class="crowd"></div><span>VELOCIDAD</span></div>
+        <div class="track-light light-left"><i></i><i></i><i></i></div>
+        <div class="track-light light-right"><i></i><i></i><i></i></div>
+        <div class="track-crew crew-left" aria-hidden="true"><i></i><b></b></div>
+        <div class="track-crew crew-right" aria-hidden="true"><i></i><b></b></div>
+        <div class="finish-line"><span>META</span></div>
+        <div class="road">
+          <div class="road-lines"></div>
+          <div class="road-reflections"></div>
+          <div class="tire-grooves" aria-hidden="true"></div>
+          <div class="road-glare" aria-hidden="true"></div>
+          <div class="lane-direction" aria-hidden="true"><span>›</span><span>›</span><span>›</span></div>
+          <div class="roadside roadside-left"></div>
+          <div class="roadside roadside-right"></div>
+          <div class="boost-pad boost-pad-one"><span>BOOST</span></div>
+          <div class="boost-pad boost-pad-two"><span>BOOST</span></div>
+          <div class="track-ramp ramp-one" data-distance="45" data-lane="0" aria-label="Rampa de salto"><i></i><b>JUMP</b></div>
+          <div class="track-ramp ramp-two" data-distance="118" data-lane="-1" aria-label="Rampa de salto"><i></i><b>JUMP</b></div>
+          <div class="track-ramp ramp-three" data-distance="153" data-lane="1" aria-label="Rampa de salto"><i></i><b>JUMP</b></div>
+          <div class="nitro-pickup nitro-one">N</div>
+          <div class="nitro-pickup nitro-two">N</div>
+          <div class="track-obstacle cone-obstacle obstacle-one" data-distance="29" data-lane="0" aria-label="Conos en la pista"><i></i><i></i></div>
+          <div class="track-obstacle barrier-obstacle obstacle-two" data-distance="58" data-lane="-1" aria-label="Barrera en la pista"><i></i></div>
+          <div class="track-obstacle cone-obstacle obstacle-three" data-distance="84" data-lane="1" aria-label="Conos en la pista"><i></i><i></i></div>
+          <div id="speed-streaks" class="speed-streaks"></div>
+          <div class="race-car-wrap player-wrap">
+            <div id="race-player-car" class="car player-car body-coupe stripe-none skin-clean">
+              <div class="booster-rig" aria-label="Kit de cuatro impulsores"><i></i><i></i><i></i><i></i></div>
+              <div class="car-spoiler"></div><div class="car-body"><div class="car-roof"></div><div class="window window-left"></div><div class="window window-right"></div><div class="headlight"></div><div class="taillight"></div><div class="mirror"></div><div class="door"><i class="door-handle"></i></div><div class="side-skirt"></div><div class="grille"></div><div class="bumper"></div><div class="stripe"></div></div><div class="wheel wheel-back"><i></i></div><div class="wheel wheel-front"><i></i></div>
+            </div>
+          </div>
+          <div class="race-car-wrap bot-wrap bot-wrap-one">
+            <div class="car bot-car body-sport stripe-racing" style="--car-color:#a855f7">
+              <div class="car-spoiler"></div><div class="car-body"><div class="car-roof"></div><div class="window window-left"></div><div class="window window-right"></div><div class="headlight"></div><div class="taillight"></div><div class="mirror"></div><div class="door"><i class="door-handle"></i></div><div class="side-skirt"></div><div class="grille"></div><div class="bumper"></div><div class="stripe"></div></div><div class="wheel wheel-back"><i></i></div><div class="wheel wheel-front"><i></i></div>
+            </div>
+          </div>
+          <div class="race-car-wrap bot-wrap bot-wrap-two">
+            <div class="car bot-car body-muscle stripe-bolt skin-flames" style="--car-color:#ff8b1f">
+              <div class="car-spoiler"></div><div class="car-body"><div class="car-roof"></div><div class="window window-left"></div><div class="window window-right"></div><div class="headlight"></div><div class="taillight"></div><div class="mirror"></div><div class="door"><i class="door-handle"></i></div><div class="side-skirt"></div><div class="grille"></div><div class="bumper"></div><div class="stripe"></div></div><div class="wheel wheel-back"><i></i></div><div class="wheel wheel-front"><i></i></div>
+            </div>
+          </div>
+          <div class="race-car-wrap bot-wrap bot-wrap-three">
+            <div class="car bot-car body-coupe stripe-none skin-neon wheels-neon" style="--car-color:#00d8ff">
+              <div class="car-spoiler"></div><div class="car-body"><div class="car-roof"></div><div class="window window-left"></div><div class="window window-right"></div><div class="headlight"></div><div class="taillight"></div><div class="mirror"></div><div class="door"><i class="door-handle"></i></div><div class="side-skirt"></div><div class="grille"></div><div class="bumper"></div><div class="stripe"></div></div><div class="wheel wheel-back"><i></i></div><div class="wheel wheel-front"><i></i></div>
+            </div>
+          </div>
+        </div>
+        <div class="boost-meter" aria-label="Medidor de turbo"><span>TURBO</span><div><i id="boost-meter-fill"></i></div></div>
+        <aside class="race-telemetry" aria-label="Telemetría de carrera">
+          <span>SIM RACE</span>
+          <b id="telemetry-gear">N</b>
+          <small>GEAR</small>
+          <div><i id="telemetry-rpm"></i></div>
+          <em>RPM</em>
+        </aside>
+        <div id="countdown" class="countdown">3</div>
+      </div>
+      <div class="race-controls">
+        <p id="race-instruction">Prepárate... acelera con ESPACIO y esquiva con A/D o ←/→.</p>
+        <div class="race-actions">
+          <button id="move-left-button" class="steer-button" type="button" disabled aria-label="Mover el auto a la izquierda">← <span>IZQUIERDA</span></button>
+          <button id="accelerate-button" class="accelerate-button" disabled>ACELERAR <span>SPACE</span></button>
+          <button id="nitro-button" class="nitro-button" disabled>NITRO <span>SHIFT</span></button>
+          <button id="move-right-button" class="steer-button" type="button" disabled aria-label="Mover el auto a la derecha"><span>DERECHA</span> →</button>
+          <button id="look-left-button" class="look-button" type="button" disabled aria-label="Mirar hacia la izquierda">◀ <span>MIRAR</span></button>
+          <button id="look-right-button" class="look-button" type="button" disabled aria-label="Mirar hacia la derecha"><span>MIRAR</span> ▶</button>
+        </div>
+      </div>
+      <div id="result-modal" class="result-modal hidden">
+        <div class="result-card">
+          <p id="result-kicker" class="eyebrow">RESULTADO</p>
+          <h2 id="result-title">¡GANASTE!</h2>
+          <p id="result-text">Tu diseño cruzó la meta primero.</p>
+          <div id="reward-panel" class="reward-panel hidden">
+            <span class="reward-icon">🏆</span>
+            <div><small>RECOMPENSA OBTENIDA</small><b id="reward-title">+100 CRÉDITOS</b><p id="reward-description">Ganaste una caja de mejora.</p></div>
+          </div>
+          <button id="again-button" class="race-button">COBRAR Y VOLVER <span>↺</span></button>
+        </div>
+      </div>
+    </section>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
